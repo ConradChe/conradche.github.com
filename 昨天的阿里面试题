@@ -20,7 +20,7 @@ public class Main {
         System.out.println(maxBoy);
 
     }
-//获取周围女生最多的男生编号
+
     public static int findMostHappyBoy(String friends){
 
         int max = 0;
@@ -54,7 +54,6 @@ public class Main {
         }
             return boy;
         }
-//获取指定女生数团体的最多男生数
         public static int findMostBoy(String friends,int girl){
 
             int max = 0;
