@@ -1,0 +1,89 @@
+package com.cgq.test4;
+
+import java.util.Scanner;
+
+public class Main {
+
+
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        String res;
+            
+        String _users;
+        try {
+            _users = in.nextLine();
+        } catch (Exception e) {
+            _users = null;
+        }
+  
+        int boy = findMostHappyBoy(_users);
+        System.out.println(boy);
+        int maxBoy = findMostBoy(_users,3);
+        System.out.println(maxBoy);
+
+    }
+
+    public static int findMostHappyBoy(String friends){
+
+        int max = 0;
+        int boy = 0;
+
+        for (int i = 0; i < friends.length() ; i++) {
+            int num = 0;
+            if (friends.charAt(i) == 'g'){
+                continue;
+            }
+            int index1 = i == friends.length()-1?0:i+1;
+            int index2 = i == 0?friends.length()-1:i-1;
+            while (friends.charAt(index1) != 'b'){
+                num++;
+                index1++;
+                if (index1 >= friends.length()){
+                    index1=0;
+                }
+            }
+            while (friends.charAt(index2) != 'b'){
+                num++;
+                index2--;
+                if (index2 < 0){
+                    index2=friends.length()-1;
+                }
+            }
+            if (max < num){
+                max = num;
+                boy = i;
+            }
+        }
+            return boy;
+        }
+
+        public static int findMostBoy(String friends,int girl){
+
+            int max = 0;
+            for (int i = 0; i < friends.length() ; i++) {
+                int index = i;
+                int g_num = 0;
+                int b_num = 0;
+                while (g_num <=girl){
+                    if (friends.charAt(index) == 'b'){
+                        b_num++;
+                    }else if(friends.charAt(index) == 'g'){
+                        g_num++;
+                    }
+                    index++;
+                    if (index == friends.length()){
+                        index = 0;
+                    }
+                }
+                if (max < b_num){
+                    max = b_num;
+                }
+
+            }
+
+
+            return max;
+        }
+
+
+}
